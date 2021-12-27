@@ -25,7 +25,9 @@ class SeacrhMovies extends ChangeNotifier {
       for (var i = 0; i < data.length; i++) {
         movies.add(MoviesModel.fromJson(data[i]));
       }
+      _isLoading = false;
     } else {
+      _isLoading = false;
       throw Exception('Something went wrong');
     }
     _isLoading = false;

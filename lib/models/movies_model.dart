@@ -32,17 +32,18 @@ class MoviesModel {
 
   MoviesModel.fromJson(Map<String, dynamic> json) {
     adult = json['adult'];
-    backdropPath =
-        "https://image.tmdb.org/t/p/original" + json['backdrop_path'];
+    backdropPath = "https://image.tmdb.org/t/p/original" +
+        json['backdrop_path'].toString();
     genreIds = json['genre_ids'].cast<int>();
     id = json['id'];
     originalLanguage = json['original_language'];
     originalTitle = json['original_title'];
     overview = json['overview'];
     popularity = json['popularity'];
-    posterPath = "https://image.tmdb.org/t/p/original" + json['poster_path'];
-    releaseDate = json['release_date'];
-    title = json['title'];
+    posterPath =
+        "https://image.tmdb.org/t/p/original" + json['poster_path'].toString();
+    releaseDate = json['release_date'].toString();
+    title = json['title'].toString();
     video = json['video'];
 
     voteCount = json['vote_count'];

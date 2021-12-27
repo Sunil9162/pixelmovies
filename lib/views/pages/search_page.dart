@@ -44,53 +44,62 @@ class _SearchPageState extends State<SearchPage> {
             : ListView.builder(
                 itemCount: value.allMovies.length,
                 itemBuilder: (_, i) {
-                  return SizedBox(
-                    height: 120,
-                    width: MediaQuery.of(context).size.width,
-                    child: Row(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            image: DecorationImage(
-                              image: CachedNetworkImageProvider(
-                                value.allMovies[i].posterPath,
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SizedBox(
+                      height: 150,
+                      width: MediaQuery.of(context).size.width,
+                      child: Row(
+                        children: [
+                          Container(
+                            height: 160,
+                            width: 100,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              image: DecorationImage(
+                                image: CachedNetworkImageProvider(
+                                  value.allMovies[i].posterPath,
+                                ),
+                                fit: BoxFit.cover,
                               ),
-                              fit: BoxFit.cover,
                             ),
                           ),
-                        ),
-                        Expanded(
-                            child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              value.allMovies[i].title,
-                              overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black,
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Expanded(
+                              child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(
+                                value.allMovies[i].title,
+                                overflow: TextOverflow.ellipsis,
+                                style: const TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),
                               ),
-                            ),
-                            Text(
-                              "Released on-" + value.allMovies[i].releaseDate,
-                              style: const TextStyle(
-                                fontSize: 14,
-                                color: Colors.grey,
+                              Text(
+                                "Released on-" + value.allMovies[i].releaseDate,
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.grey,
+                                ),
                               ),
-                            ),
-                            Text(
-                              "Votes-" +
-                                  value.allMovies[i].voteCount.toString(),
-                              style: const TextStyle(
-                                fontSize: 14,
-                                color: Colors.grey,
+                              Text(
+                                "Votes-" +
+                                    value.allMovies[i].voteCount.toString(),
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.grey,
+                                ),
                               ),
-                            ),
-                          ],
-                        ))
-                      ],
+                            ],
+                          ))
+                        ],
+                      ),
                     ),
                   );
                 },
