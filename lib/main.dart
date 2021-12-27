@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pixelmovies/logics/search_movies.dart';
 import 'package:provider/provider.dart';
 
 import 'logics/movies_list_provider.dart';
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => MoviesList()),
+        ChangeNotifierProvider(create: (_) => SeacrhMovies()),
       ],
       child: MaterialApp(
         theme: ThemeData(

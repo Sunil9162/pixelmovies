@@ -15,12 +15,20 @@ class _SearchPageState extends State<SearchPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: TextField(onChanged: (value) {
-          if (value.length > 2) {
-            final getData = Provider.of<SeacrhMovies>(context, listen: false);
-            getData.searchMovies(query: value.toString());
-          }
-        }),
+        title: TextField(
+          decoration: const InputDecoration(
+            hintText: "Search for Movies...",
+            hintStyle: TextStyle(
+              color: Colors.grey,
+            ),
+          ),
+          onChanged: (value) {
+            if (value.length > 2) {
+              final getData = Provider.of<SeacrhMovies>(context, listen: false);
+              getData.searchMovies(query: value.toString());
+            }
+          },
+        ),
       ),
       body: Consumer<SeacrhMovies>(
         builder: (BuildContext context, value, Widget? child) => value.isLoading
@@ -34,6 +42,7 @@ class _SearchPageState extends State<SearchPage> {
                 ),
               )
             : ListView.builder(
+                itemCount: value.allMovies.length,
                 itemBuilder: (_, i) {
                   return SizedBox(
                     height: 120,
